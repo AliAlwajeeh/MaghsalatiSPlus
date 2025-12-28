@@ -1,0 +1,21 @@
+﻿@model MaghsalatiSPlus.WebMVC.Models.CategoryViewModel
+@{
+    ViewData["Title"] = "حذف القسم";
+    Layout = "_Layout";
+}
+
+<h3>⚠️ حذف القسم</h3>
+<hr />
+
+<h5 class="text-danger">هل أنت متأكد أنك تريد حذف هذا القسم؟</h5>
+<dl class="row">
+    <dt class="col-sm-2">الاسم</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">تأكيد الحذف</button>
+    <a asp-action="Index" class="btn btn-secondary">إلغاء</a>
+</form>

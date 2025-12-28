@@ -1,0 +1,26 @@
+﻿@model MaghsalatiSPlus.WebMVC.Models.CategoryViewModel
+@{
+    ViewData["Title"] = "تعديل قسم";
+    Layout = "_Layout";
+}
+
+<h3>✏️ تعديل القسم</h3>
+<hr />
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">اسم القسم</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">تحديث</button>
+    <a asp-action="Index" class="btn btn-secondary">إلغاء</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

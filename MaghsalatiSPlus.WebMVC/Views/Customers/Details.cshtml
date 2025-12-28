@@ -1,0 +1,22 @@
+﻿@model MaghsalatiSPlus.WebMVC.Models.CustomerViewModel
+@{
+    ViewData["Title"] = "تفاصيل العميل";
+    Layout = "_Layout";
+}
+
+<h3>📄 تفاصيل العميل</h3>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">المعرف</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">الاسم</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+
+    <dt class="col-sm-3">رقم الهاتف</dt>
+    <dd class="col-sm-9">@Model.PhoneNumber</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">تعديل</a>
+<a asp-action="Index" class="btn btn-secondary">رجوع</a>

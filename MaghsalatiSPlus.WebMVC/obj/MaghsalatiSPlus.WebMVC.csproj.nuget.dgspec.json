@@ -1,0 +1,87 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\DevAli Alwajeeh Work\\ASPDotNet\\MaghsalatiSPlus\\MaghsalatiSPlus.WebMVC\\MaghsalatiSPlus.WebMVC.csproj": {}
+  },
+  "projects": {
+    "D:\\DevAli Alwajeeh Work\\ASPDotNet\\MaghsalatiSPlus\\MaghsalatiSPlus.WebMVC\\MaghsalatiSPlus.WebMVC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\DevAli Alwajeeh Work\\ASPDotNet\\MaghsalatiSPlus\\MaghsalatiSPlus.WebMVC\\MaghsalatiSPlus.WebMVC.csproj",
+        "projectName": "MaghsalatiSPlus.WebMVC",
+        "projectPath": "D:\\DevAli Alwajeeh Work\\ASPDotNet\\MaghsalatiSPlus\\MaghsalatiSPlus.WebMVC\\MaghsalatiSPlus.WebMVC.csproj",
+        "packagesPath": "C:\\Users\\yezen\\.nuget\\packages\\",
+        "outputPath": "D:\\DevAli Alwajeeh Work\\ASPDotNet\\MaghsalatiSPlus\\MaghsalatiSPlus.WebMVC\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\yezen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.3.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.35.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

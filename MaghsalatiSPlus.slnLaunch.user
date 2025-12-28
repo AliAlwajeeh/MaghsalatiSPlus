@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "MaghsalatiSPlus\\MaghsalatiSPlus.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "MaghsalatiSPlus.WebMVC\\MaghsalatiSPlus.WebMVC.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

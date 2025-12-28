@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MaghsalatiSPlus.WebMVC.Models.CustomerViewModel>
+@{
+    ViewData["Title"] = "إدارة العملاء";
+    Layout = "_Layout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>👥 إدارة العملاء</h3>
+    <a asp-action="Create" class="btn btn-primary">➕ إضافة عميل جديد</a>
+</div>
+
+<table class="table table-bordered table-striped text-center align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>م</th>
+            <th>اسم العميل</th>
+            <th>رقم الهاتف</th>
+            <th style="width:200px;">إجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            int index = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@index++</td>
+                    <td>@item.Name</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">عرض</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">تعديل</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">حذف</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="4" class="text-muted">لا يوجد عملاء حالياً</td></tr>
+        }
+    </tbody>
+</table>

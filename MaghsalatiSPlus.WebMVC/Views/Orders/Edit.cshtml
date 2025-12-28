@@ -1,0 +1,37 @@
+﻿@model MaghsalatiSPlus.WebMVC.Models.UpdateOrderViewModel
+
+
+@{
+    ViewData["Title"] = "تعديل الطلب";
+    Layout = "_Layout";
+}
+<p>عدد العناصر: @Model.OrderItems?.Count</p>
+
+<h3>✏️ تعديل الطلب</h3>
+<hr />
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    
+
+    <div class="mb-3">
+        <label class="form-label">العميل</label>
+        <select asp-for="CustomerId" asp-items="ViewBag.CustomerId" class="form-select"></select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">عناصر الطلب</label>
+        @for (int i = 0; i < Model.OrderItems.Count; i++)
+        {
+            <div class="border rounded p-2 mb-2">
+                <input asp-for="OrderItems[@i].ItemName" class="form-control mb-1" placeholder="اسم العنصر" />
+                <input asp-for="OrderItems[@i].Quantity" class="form-control mb-1" placeholder="الكمية" />
+                <input asp-for="OrderItems[@i].Price" class="form-control mb-1" placeholder="السعر" />
+                <select asp-for="OrderItems[@i].CategoryId" asp-items="ViewBag.CategoryId" class="form-select mb-1"></select>
+                <input type="file" name="OrderItems[@i].ImageFile" class="form-control" />
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">تحديث الطلب</button>
+    <a asp-action="Index" class="btn btn-secondary">إلغاء</a>
+</form>

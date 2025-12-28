@@ -1,0 +1,30 @@
+﻿@page
+@model MaghsalatiSPlus.Pages.Admin.Users.IndexModel
+@{
+    ViewData["Title"] = "إدارة المستخدمين"; Layout = "_AdminLayout";
+}
+
+<h1>@ViewData["Title"]</h1>
+<table class="table">
+    <thead class="table-dark">
+        <tr><th>اسم المحل</th><th>البريد</th><th>إجراءات</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.ShopName</td>
+                <td>@user.Email</td>
+                
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@user.Id" class="btn btn-sm btn-secondary">تعديل</a>
+                    <a asp-page="./Delete" asp-route-id="@user.Id" class="btn btn-sm btn-danger">حذف</a>
+                    <a asp-page="./Delete" asp-route-id="@user.Id" class="btn btn-sm btn-danger">حذف</a>
+
+
+                
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+﻿@page "{id}"
+@model DeleteModel
+@{
+    Layout = "_AdminLayout";
+}
+
+<h3>هل أنت متأكد أنك تريد حذف هذا المستخدم؟</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">اسم المحل</dt>
+        <dd class="col-sm-10">@Model.UserToDelete.ShopName</dd>
+        <dt class="col-sm-2">البريد</dt>
+        <dd class="col-sm-10">@Model.UserToDelete.Email</dd>
+    </dl>
+
+    <form method="post" asp-route-id="@Model.UserToDelete.Id">
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-page="./Index">العودة إلى القائمة</a>
+    </form>
+</div>

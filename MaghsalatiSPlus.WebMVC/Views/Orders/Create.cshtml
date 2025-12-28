@@ -1,0 +1,82 @@
+﻿@model MaghsalatiSPlus.WebMVC.Models.CreateOrderViewModel
+@{
+    ViewData["Title"] = "إنشاء طلب جديد";
+}
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label asp-for="CustomerId" class="form-label">اختر العميل</label>
+        <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId">
+            <option value="">— اختر العميل —</option>
+        </select>
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+
+    <hr class="my-4" />
+    <h4 class="mb-3">عناصر الطلب</h4>
+
+    <div id="items-container">
+        @for (int i = 0; i < Model.OrderItems.Count; i++)
+        {
+            <div class="border rounded p-3 mb-3">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label asp-for="@Model.OrderItems[i].ItemName" class="form-label">اسم الصنف</label>
+                        <input asp-for="@Model.OrderItems[i].ItemName" class="form-control" placeholder="مثال: ثوب رجالي" />
+                        <span asp-validation-for="@Model.OrderItems[i].ItemName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label asp-for="@Model.OrderItems[i].Quantity" class="form-label">الكمية</label>
+                        <input asp-for="@Model.OrderItems[i].Quantity" class="form-control" type="number" min="1" value="1" />
+                        <span asp-validation-for="@Model.OrderItems[i].Quantity" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label asp-for="@Model.OrderItems[i].Service" class="form-label">الخدمة</label>
+                        <select asp-for="@Model.OrderItems[i].Service" class="form-control">
+                            <option value="">— اختر الخدمة —</option>
+                            <option value="0">غسيل</option>
+                            <option value="1">كي</option>
+                            <option value="2">غسيل وكي</option>
+                        </select>
+                        <span asp-validation-for="@Model.OrderItems[i].Service" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label asp-for="@Model.OrderItems[i].Price" class="form-label">السعر</label>
+                        <input asp-for="@Model.OrderItems[i].Price" class="form-control" type="number" step="0.01" min="0" placeholder="0.00" />
+                        <span asp-validation-for="@Model.OrderItems[i].Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4 mt-3">
+                        <label asp-for="@Model.OrderItems[i].CategoryId" class="form-label">القسم</label>
+                        <select asp-for="@Model.OrderItems[i].CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                            <option value="">— اختر القسم —</option>
+                        </select>
+                        <span asp-validation-for="@Model.OrderItems[i].CategoryId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-8 mt-3">
+                        <label asp-for="@Model.OrderItems[i].ImageFile" class="form-label">صورة العنصر</label>
+                        <input asp-for="@Model.OrderItems[i].ImageFile" type="file" class="form-control" accept="image/*" />
+                        <span asp-validation-for="@Model.OrderItems[i].ImageFile" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-success">حفظ الطلب</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">إلغاء</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

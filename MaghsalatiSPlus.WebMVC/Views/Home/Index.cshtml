@@ -1,0 +1,113 @@
+﻿@model IEnumerable<MaghsalatiSPlus.WebMVC.Models.OrderViewModel>
+@{
+    ViewData["Title"] = "لوحة التحكم الرئيسية";
+    Layout = "_Layout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-0">@ViewData["Title"]</h1>
+        @if (ViewBag.ShopName != null)
+        {
+            <p class="mb-0 text-muted">أهلاً بك، @ViewBag.ShopName</p>
+        }
+    </div>
+    <div class="btn-group">
+        <a asp-controller="Orders" asp-action="Create" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-circle"></i> إنشاء طلب جديد
+        </a>
+        <a asp-controller="Categories" asp-action="Create" class="btn btn-success shadow-sm">
+            <i class="bi bi-folder-plus"></i> إنشاء قسم جديد
+        </a>
+        <a asp-controller="Customers" asp-action="Create" class="btn btn-info shadow-sm text-white">
+            <i class="bi bi-person-plus"></i> إنشاء عميل جديد
+        </a>
+    </div>
+</div>
+
+<!-- روابط التنقل السريعة -->
+<div class="mb-4">
+    <a asp-controller="Categories" asp-action="Index" class="btn btn-outline-success me-2">
+        📂 إدارة الأقسام
+    </a>
+    <a asp-controller="Customers" asp-action="Index" class="btn btn-outline-info me-2">
+        👥 إدارة العملاء
+    </a>
+    <a asp-controller="Orders" asp-action="Index" class="btn btn-outline-primary">
+        📋 إدارة الطلبات
+    </a>
+</div>
+
+<!-- صف بطاقات الملخص -->
+<div class="row">
+    <!-- بطاقة: عدد الطلبات -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="text-xs fw-bold text-primary text-uppercase mb-1">
+                            عدد الطلبات
+                        </div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">@Model.Count()</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="bi bi-receipt-cutoff" style="font-size: 2rem; color: #dddfeb;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- يمكن إضافة بطاقات أخرى للعملاء والأقسام -->
+
+</div>
+
+<!-- جدول أحدث الطلبات -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fw-bold text-primary">أحدث 5 طلبات</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>رقم الطلب</th>
+                        <th>اسم العميل</th>
+                        <th>تاريخ الطلب</th>
+                        <th>الحالة</th>
+                        <th>الإجمالي</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Take(5))
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id">#@order.Id</a>
+                            </td>
+                            <td>@order.CustomerName</td>
+                            <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                <span class="badge bg-info">@order.Status</span>
+                            </td>
+                            <td>@order.TotalAmount.ToString("C")</td>
+                        </tr>
+                    }
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center">لا توجد طلبات لعرضها.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <!-- إذا لم يكن موجوداً في _Layout -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+}

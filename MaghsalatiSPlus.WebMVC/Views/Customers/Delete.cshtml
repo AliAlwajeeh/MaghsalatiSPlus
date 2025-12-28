@@ -1,0 +1,28 @@
+﻿@model CustomerViewModel
+
+@{
+    ViewData["Title"] = "حذف العميل";
+    Layout = "_Layout";
+}
+
+<h3 class="text-danger">⚠️ حذف العميل</h3>
+<hr />
+
+@if (Model != null)
+{
+    <h5>هل أنت متأكد من حذف هذا العميل؟</h5>
+    <p><strong>@Model.Name</strong></p>
+
+    <form asp-action="Delete" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">تأكيد الحذف</button>
+        <a asp-action="Index" class="btn btn-secondary">إلغاء</a>
+    </form>
+}
+else
+{
+    <div class="alert alert-danger">
+        لا توجد بيانات لعرضها — ربما العميل محذوف بالفعل أو غير موجود.
+    </div>
+}

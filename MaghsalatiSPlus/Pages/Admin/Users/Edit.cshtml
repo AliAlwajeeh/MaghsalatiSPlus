@@ -1,0 +1,19 @@
+﻿@page "{id}"
+@model EditModel
+@{
+    ViewData["Title"] = "تعديل المستخدم"; Layout = "_AdminLayout";
+}
+
+<h1>تعديل: @Model.UserToEdit.ShopName</h1>
+<form method="post">
+    <input type="hidden" asp-for="UserToEdit.Id" />
+    <div class="mb-3">
+        <label asp-for="UserToEdit.ShopName"></label>
+        <input asp-for="UserToEdit.ShopName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="UserToEdit.PhoneNumber"></label>
+        <input asp-for="UserToEdit.PhoneNumber" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+</form>

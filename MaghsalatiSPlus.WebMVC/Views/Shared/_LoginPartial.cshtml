@@ -1,0 +1,28 @@
+﻿<!-- في: Views/Shared/_LoginPartial.cshtml -->
+
+<ul class="navbar-nav">
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        // --- إذا كان المستخدم مسجلاً دخوله (أي أن هناك كوكي مصادقة صالح) ---
+        <li class="nav-item">
+            <!-- يمكننا عرض الإيميل الذي حفظناه في الـ Claim -->
+            <span class="navbar-text">أهلاً بك، @User.Identity.Name!</span>
+        </li>
+        <li class="nav-item ms-2">
+            <!-- نموذج بسيط لتسجيل الخروج -->
+            <form class="form-inline" asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit" class="btn btn-outline-secondary">خروج</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        // --- إذا لم يكن المستخدم مسجلاً دخوله ---
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">تسجيل</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary" asp-controller="Account" asp-action="Login">دخول</a>
+        </li>
+    }
+</ul>

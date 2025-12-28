@@ -1,0 +1,31 @@
+﻿@model CreateCustomerDto
+@{
+    ViewData["Title"] = "إضافة عميل جديد";
+}
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <!-- حقل مخفي يحمل معرف صاحب المتجر -->
+    <input asp-for="ShopOwnerId" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">الاسم الكامل</label>
+        <input asp-for="Name" class="form-control" placeholder="اكتب اسم العميل" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PhoneNumber" class="form-label">رقم الهاتف</label>
+        <input asp-for="PhoneNumber" class="form-control" inputmode="numeric" placeholder="967 700000000" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">حفظ العميل</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

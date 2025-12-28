@@ -1,0 +1,76 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "إنشاء حساب جديد";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7 col-md-8">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header"><h3 class="text-center font-weight-light my-4">@ViewData["Title"]</h3></div>
+            <div class="card-body p-4">
+
+                <p class="text-center text-muted mb-4">قم بملء البيانات التالية لإنشاء حساب لمغسلتك.</p>
+
+                <form asp-action="Register" method="post" enctype="multipart/form-data">
+
+                    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="ShopName" class="form-label"></label>
+                        <input asp-for="ShopName" class="form-control" />
+                        <span asp-validation-for="ShopName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!-- --- هذا هو الحقل الجديد الذي تم إضافته --- -->
+                    <div class="mb-3">
+                        <label asp-for="Location" class="form-label"></label>
+                        <input asp-for="Location" class="form-control" placeholder="مثال: الرياض، حي الملز" />
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ProfileImageFile" class="form-label"></label>
+                        <input asp-for="ProfileImageFile" type="file" class="form-control" />
+                        <span asp-validation-for="ProfileImageFile" class="text-danger"></span>
+                    </div>
+
+                    <div class="mt-4 mb-0 d-grid">
+                        <button type="submit" class="btn btn-primary btn-block">إنشاء الحساب</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center py-3">
+                <div class="small"><a asp-action="Login">لديك حساب بالفعل؟ تسجيل الدخول</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
